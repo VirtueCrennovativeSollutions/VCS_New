@@ -4401,8 +4401,8 @@ figure {
 }
 
 .footer-social-media-wrapper {
-  grid-column-gap: 16px;
-  justify-content: space-between;
+  gap: 16px;
+  justify-content: flex-start;
   align-items: center;
   display: flex;
 }
