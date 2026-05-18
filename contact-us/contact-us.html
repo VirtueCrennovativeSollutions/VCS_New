@@ -127,8 +127,17 @@
                         <div class="contact-us-form-wrap">
                             <div class="contact-us-form-block w-form">
                                 <form id="wf-form-Contact-Form" name="wf-form-Contact-Form" data-name="Contact Form"
-                                    method="get" class="contact-us-form" data-wf-page-id="6877e02f5387b6bdd6d338f7"
-                                    data-wf-element-id="62bf5370-1f1c-50de-9efe-03b9a6862301">
+                                    method="POST" action="https://api.web3forms.com/submit" class="contact-us-form">
+                                    <!-- Web3Forms Access Key - Replace with your key from https://web3forms.com -->
+                                    <input type="hidden" name="access_key" value="8f694df9-1082-4df8-9f32-a889c3f3f765" />
+                                    <!-- Send to this email -->
+                                    <input type="hidden" name="to_email" value="virtuedesigns07@gmail.com" />
+                                    <input type="hidden" name="subject" value="New Contact Form Submission - VCS Website" />
+                                    <input type="hidden" name="from_name" value="VCS Website Contact Form" />
+                                    <!-- Redirect back after submission -->
+                                    <input type="hidden" name="redirect" value="" id="form-redirect" />
+                                    <!-- Honeypot for spam -->
+                                    <input type="checkbox" name="botcheck" class="hidden" style="display: none;" />
                                     <div class="contact-us-form-wrap-main">
                                         <div class="contact-us-form-flex">
                                             <div class="contact-us-form-single"><label for="Name"
@@ -149,20 +158,31 @@
                                                     name="Phone-Number" data-name="Phone Number"
                                                     placeholder="+91 93706 05124" type="tel" id="Phone-Number"
                                                     required="" /></div>
-                                            <div class="contact-us-form-single"><label for="Budget"
-                                                    class="contact-us-form-text-field">Budget*</label><input
-                                                    class="contact-us-form-input-field w-input" maxlength="256"
-                                                    name="Budget" data-name="Budget" placeholder="Type Your Budget"
-                                                    type="text" id="Budget" required="" /></div>
+                                            <div class="contact-us-form-single"><label for="Service-Type"
+                                                    class="contact-us-form-text-field">Service Type*</label>
+                                                <select class="contact-us-form-input-field w-input" name="Service-Type"
+                                                    id="Service-Type" required=""
+                                                    style="appearance: none; -webkit-appearance: none; cursor: pointer; background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23888' d='M1 1l5 5 5-5'/%3E%3C/svg%3E\"); background-repeat: no-repeat; background-position: right 16px center;">
+                                                    <option value="" disabled selected>Select a service...</option>
+                                                    <option value="Website Development and Design">Website Development &amp; Design</option>
+                                                    <option value="Branding and Logo Design">Branding &amp; Logo Design</option>
+                                                    <option value="Social Media Management and Strategy">Social Media Management &amp; Strategy</option>
+                                                    <option value="Tech and Brand Consulting">Tech &amp; Brand Consulting</option>
+                                                    <option value="Graphics Design and Print Materials">Graphics Design &amp; Print Materials</option>
+                                                    <option value="Other">Other</option>
+                                                </select>
+                                            </div>
                                         </div>
                                         <div class="contact-us-form-textarea-wrap"><label for="Inquiry-Message"
                                                 class="contact-us-form-text-field">Inquiry about</label><textarea
                                                 id="Inquiry-Message" name="Inquiry-Message" maxlength="5000"
                                                 data-name="Inquiry Message" placeholder="Write your message" required=""
                                                 class="contact-us-form-textarea w-input"></textarea></div>
+                                        <!-- hCaptcha -->
+                                        <div class="h-captcha" data-captcha="true" data-theme="light" style="margin-bottom: 16px;"></div>
                                         <div class="contact-us-form-submit-button-wrap"><input type="submit"
-                                                data-wait="Please wait..."
-                                                class="contact-us-form-submit-button w-button" value="Send Message" />
+                                                data-wait="Sending..."
+                                                class="contact-us-form-submit-button w-button" value="Send Message" id="contact-submit-btn" />
                                         </div>
                                     </div>
                                 </form>
@@ -329,18 +349,7 @@
                         <div class="footer-details-content">
                             <div class="footer-details-text">� 2025 <a href="/" class="footer-details-text-link">Virtue
                                     Crennovative Solutions</a>. All Rights Reserved.</div>
-                            <div class="footer-social-media-wrapper">
-                                <div class="footer-social-media-title">Follow Us</div><a
-                                    href="https://www.facebook.com/" target="_blank"
-                                    class="footer-social-media-icon"></a><a href="https://www.facebook.com/"
-                                    target="_blank" class="footer-social-media-icon"></a><a href="https://twitter.com/"
-                                    target="_blank" class="footer-social-media-icon"></a><a href="https://twitter.com/"
-                                    target="_blank" class="footer-social-media-icon"></a><a
-                                    href="https://www.pinterest.com/" target="_blank"
-                                    class="footer-social-media-icon"></a>
-                                <a href="https://www.tiktok.com/" target="_blank" class="footer-social-media-icon"></a>
-                            </div>
-                        </div>
+                            <div class="footer-social-media-wrapper"><div class="footer-social-media-title">Follow Us</div><a href="https://www.facebook.com/profile.php?id=61576943031656" target="_blank" class="footer-social-media-icon">&#xf39e;</a><a href="https://www.instagram.com/virtue_crennovative_solutions/" target="_blank" class="footer-social-media-icon">&#xf16d;</a><a href="https://www.linkedin.com/company/virtue-crennovative-solutions/?viewAsMember=true" target="_blank" class="footer-social-media-icon">&#xf08c;</a></div></div>
                     </div>
                 </div>
             </div>
@@ -355,6 +364,69 @@
         type="text/javascript"></script>
     <script src="https://cdn.prod.website-files.com/6877e02f5387b6bdd6d338ec/js/webflow.31837de7.1756091d1d28d78f.js"
         type="text/javascript"></script>
+    <!-- Web3Forms hCaptcha script -->
+    <script src="https://web3forms.com/client/script.js" async defer></script>
+    <script>
+        // Contact form AJAX submission via Web3Forms
+        const contactForm = document.getElementById('wf-form-Contact-Form');
+        const submitBtn = document.getElementById('contact-submit-btn');
+        // hCaptcha validation: block submission if not solved
+        if (contactForm) {
+            contactForm.addEventListener('submit', function checkCaptcha(e) {
+                const hCaptchaResponse = contactForm.querySelector('textarea[name="h-captcha-response"]');
+                if (hCaptchaResponse && !hCaptchaResponse.value) {
+                    e.preventDefault();
+                    e.stopImmediatePropagation();
+                    alert('Please complete the CAPTCHA to send your message.');
+                    return false;
+                }
+            }, true); // capture phase so it runs first
+        }
+        const successDiv = document.querySelector('.contact-us-form-block .w-form-done');
+        const failDiv = document.querySelector('.contact-us-form-block .w-form-fail');
+        const subjectField = contactForm ? contactForm.querySelector('input[name="subject"]') : null;
+        const serviceSelect = contactForm ? contactForm.querySelector('select[name="Service-Type"]') : null;
+
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                // Dynamically set subject based on selected service
+                if (subjectField && serviceSelect && serviceSelect.value) {
+                    subjectField.value = 'VCS Inquiry: ' + serviceSelect.value;
+                } else if (subjectField) {
+                    subjectField.value = 'New Contact Form Submission - VCS Website';
+                }
+
+                submitBtn.value = 'Sending...';
+                submitBtn.disabled = true;
+
+                const formData = new FormData(contactForm);
+
+                fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        contactForm.style.display = 'none';
+                        successDiv.style.display = 'block';
+                        contactForm.reset();
+                    } else {
+                        failDiv.style.display = 'block';
+                    }
+                })
+                .catch(error => {
+                    failDiv.style.display = 'block';
+                })
+                .finally(() => {
+                    submitBtn.value = 'Send Message';
+                    submitBtn.disabled = false;
+                });
+            });
+        }
+    </script>
 </body>
 
 </html>

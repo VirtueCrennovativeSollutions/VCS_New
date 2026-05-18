@@ -6979,11 +6979,17 @@ figure {
   overflow: hidden;
 }
 
+@keyframes ticker-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
 .services-tools-ticker-inner {
   flex: none;
   justify-content: flex-start;
   align-items: center;
   display: flex;
+  animation: ticker-scroll 18s linear infinite;
 }
 
 .services-tools-single {
